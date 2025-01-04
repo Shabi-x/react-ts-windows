@@ -1,0 +1,28 @@
+# 忽略node_modules目录，这是npm安装的依赖包所在的目录
+node_modules/
+
+# 忽略编译输出目录
+dist/
+
+# 忽略TypeScript编译缓存
+*.tsbuildinfo
+
+# 忽略编辑器配置文件
+.vscode/
+.idea/
+
+# 忽略日志文件
+*.log
+
+# 忽略环境配置文件
+.env
+
+# 忽略测试覆盖率报告
+coverage/
+
+# 忽略打包文件
+*.tar.gz
+*.zip
+
+# 忽略临时文件
+*.tmp
