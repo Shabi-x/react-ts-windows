@@ -1,3 +1,9 @@
+/**
+ * 浅比较两个对象是否有差异
+ * @param prev
+ * @param next
+ * @returns
+ */
 export default function shallowDiffers(
   prev: Record<string, any>,
   next: Record<string, any>
