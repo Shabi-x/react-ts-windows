@@ -1,11 +1,7 @@
-import createListComponent, {
-  Props,
-  ScrollToAlign,
-} from "./createListComponent";
+import {createListComponent} from "./createListComponent", 
+import {Props,ScrollToAlign} from "./createListComponent";
 
-type InstanceProps = any;
-
-const FixedSizeList = createListComponent({
+const FixedSizeList = createListComponent<any>({
   getItemOffset: ({ itemSize }: Props<any>, index: number): number =>
     index * itemSize,
 
@@ -19,7 +15,7 @@ const FixedSizeList = createListComponent({
     index: number,
     align: ScrollToAlign,
     scrollOffset: number,
-    instanceProps: InstanceProps,
+    instanceProps: any,
     scrollbarSize: number
   ): number => {
     const isHorizontal = direction === "horizontal" || layout === "horizontal";
@@ -48,8 +44,6 @@ const FixedSizeList = createListComponent({
       case "end":
         return minOffset;
       case "center": {
-        // "Centered" offset is usually the average of the min and max.
-        // But near the edges of the list, this doesn't hold true.
         const middleOffset = Math.round(
           minOffset + (maxOffset - minOffset) / 2
         );
@@ -84,7 +78,6 @@ const FixedSizeList = createListComponent({
     startIndex: number,
     scrollOffset: number
   ): number => {
-    // TODO Deprecate direction "horizontal"
     const isHorizontal = direction === "horizontal" || layout === "horizontal";
     const offset = startIndex * itemSize;
     const size = isHorizontal ? width : height;
@@ -93,13 +86,11 @@ const FixedSizeList = createListComponent({
     );
     return Math.max(
       0,
-      Math.min(itemCount - 1, startIndex + numVisibleItems - 1) // -1 is because stop index is inclusive
+      Math.min(itemCount - 1, startIndex + numVisibleItems - 1)
     );
   },
 
-  initInstanceProps(props: Props<any>): any {
-    // Noop
-  },
+  initInstanceProps: () => ({}),
 
   shouldResetStyleCacheOnItemSizeChange: true,
 
